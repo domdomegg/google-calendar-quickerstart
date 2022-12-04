@@ -1,18 +1,18 @@
 const dayjs = require('dayjs')
-const { google, Auth, calendar_v3 } = require('googleapis')
+const { google, Auth, calendar_v3 } = require('googleapis') // eslint-disable-line no-unused-vars,camelcase
 
 const { getAuth } = require('./authentication')
 const { read, matchCalendar } = require('./util')
 
 /**
- * @param {Auth.AuthClient} auth 
+ * @param {Auth.AuthClient} auth
  * @returns {calendar_v3.Calendar}
  */
 const getCalendarClient = (auth) => google.calendar({ version: 'v3', auth })
 
 /**
  * Show the user their calendars and get them to pick one
- * @param {calendar_v3.Calendar} client 
+ * @param {calendar_v3.Calendar} client
  * @returns {Promise<string>} calendar id
  */
 const getCalendarId = async (client) => {
@@ -29,7 +29,7 @@ const getCalendarId = async (client) => {
 
 /**
  * Gets 'time-able' (as opposed to 'all-day') events
- * @param {calendar_v3.Calendar} client 
+ * @param {calendar_v3.Calendar} client
  * @returns {Promise<calendar_v3.Schema$Event[]>}
  */
 const getTimeableEvents = async (client, { calendarId = 'primary', timeMin, timeMax, maxResults = 2500 }) => {
@@ -40,10 +40,10 @@ const getTimeableEvents = async (client, { calendarId = 'primary', timeMin, time
     maxResults,
     singleEvents: true,
     orderBy: 'startTime'
-  })).data.items;
-  
+  })).data.items
+
   // This line actually does the time-able filtering
-  return events.filter(event => event.start.dateTime && event.end.dateTime);
+  return events.filter(event => event.start.dateTime && event.end.dateTime)
 }
 
 (async () => {

@@ -1,14 +1,14 @@
 const fs = require('fs')
-const path = require('path');
-const { google, Auth } = require('googleapis')
-const { authenticate } = require('@google-cloud/local-auth');
+const path = require('path')
+const { google, Auth } = require('googleapis') // eslint-disable-line no-unused-vars
+const { authenticate } = require('@google-cloud/local-auth')
 
 const OAUTH_SETTINGS_PATH = path.join(__dirname, '..', './credentials.json')
 const SAVED_TOKEN_PATH = path.join(__dirname, '..', './tokens.json')
 
 /**
  * Get client secrets. Will first try at SAVED_TOKEN_PATH, if not present uses OAuth.
- * @param {string[]} scopes 
+ * @param {string[]} scopes
  * @returns {Promise<Auth.OAuth2Client>}
  */
 const getAuth = async (scopes) => {
@@ -30,11 +30,11 @@ const getAuth = async (scopes) => {
     return getAccessToken(scopes)
   }
 
-  console.log(`Using previous token`)
+  console.log('Using previous token')
   const oauthSettings = JSON.parse(fs.readFileSync(OAUTH_SETTINGS_PATH)).installed
   const oAuth2Client = new google.auth.OAuth2({
     clientId: oauthSettings.client_id,
-    clientSecret: oauthSettings.client_secret,
+    clientSecret: oauthSettings.client_secret
   })
   oAuth2Client.setCredentials(credentials)
   return oAuth2Client
@@ -44,14 +44,14 @@ const getAuth = async (scopes) => {
 const getAccessToken = async (scopes) => {
   return authenticate({
     scopes,
-    keyfilePath: OAUTH_SETTINGS_PATH,
+    keyfilePath: OAUTH_SETTINGS_PATH
   }).then((client) => {
     // Save the credentials so we don't need to to this again until it expires
     fs.writeFileSync(SAVED_TOKEN_PATH, JSON.stringify(client.credentials, null, '\t'))
     console.log(`Token saved to ${SAVED_TOKEN_PATH}`)
 
     return client
-  });
+  })
 }
 
 module.exports = { getAuth }

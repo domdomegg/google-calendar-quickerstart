@@ -1,5 +1,5 @@
 const readline = require('readline')
-const { calendar_v3 } = require('googleapis')
+const { calendar_v3 } = require('googleapis') // eslint-disable-line no-unused-vars,camelcase
 
 const read = (prompt, fallback) => {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout, terminal: false })
@@ -10,9 +10,9 @@ const read = (prompt, fallback) => {
 }
 
 /**
- * 
- * @param {calendar_v3.Schema$CalendarListEntry[]} calendars 
- * @param {string} res user response, should be an index into calendars (0-indexed) 
+ *
+ * @param {calendar_v3.Schema$CalendarListEntry[]} calendars
+ * @param {string} res user response, should be an index into calendars (0-indexed)
  * @returns {calendar_v3.Schema$CalendarListEntry}
  */
 const matchCalendar = (calendars, res) => {
