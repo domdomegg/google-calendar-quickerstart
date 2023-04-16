@@ -4,6 +4,11 @@ Pull events out of Google Calendar. Meant to be a template that can be adapted f
 
 ## Setup
 
-1. Follow the 'Authorize credentials for a desktop application' step in the official [Node.js Quickstart](https://developers.google.com/calendar/quickstart/nodejs)
-2. Run `npm install`
-3. Run `npm start`
+1. Go to [APIs & Services > Credentials](https://console.cloud.google.com/apis/credentials) in the Google Cloud Console
+2. Click `Create Credentials > OAuth client ID`
+3. Follow the wizard to create a credential with application type `Desktop app`
+4. Download the JSON file, rename it from `client_secret_...` to `credentials.json`, and put it in the root of this repo.
+5. Run `npm install`
+6. Run `npm start`
+
+NB: After you login, if you get the `Google hasn’t verified this app` screen, click `Advanced > Go to App Name (unsafe)` to continue.
