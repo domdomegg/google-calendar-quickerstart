@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "dependencies": {
-    "dayjs": "^1.11.6",
+    "dayjs": "^1.11.19",
     "googleapis": "^166.0.0"
   },
   "devDependencies": {
-    "jest": "^29.3.1",
+    "jest": "^30.2.0",
     "standard": "^17.1.2"
   },
   "scripts": {
