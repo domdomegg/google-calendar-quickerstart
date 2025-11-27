@@ -24,5 +24,8 @@
     "env": [
       "jest"
     ]
+  },
+  "overrides": {
+    "google-auth-library": "^10.0.0"
   }
 }
